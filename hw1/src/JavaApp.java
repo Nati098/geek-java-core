@@ -34,7 +34,7 @@ public class JavaApp {
     }
 
     public static boolean task10and20(int x1, int x2) {
-        return (10 < (x1+x2)) && ((x1+x2) <= 20);
+        return (10 <= (x1+x2)) && ((x1+x2) <= 20);
     }
 
     public static void isPositiveOrNegative(int x) {

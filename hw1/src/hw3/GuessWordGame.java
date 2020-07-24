@@ -2,6 +2,8 @@ package hw3;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * При запуске программы компьютер загадывает слово, запрашивает ответ у пользователя,
@@ -26,6 +28,11 @@ public class GuessWordGame {
                 break;
             }
 
+            if (stringContainsUppercase(ans)) {
+                System.out.print("\nИспользуйте только маленькие буквы!\nВы угадали:" + hiddenWord + "\nПопробуйте еще раз: ");
+                continue;
+            }
+
             hiddenWord = openRightSymbols(word, ans, hiddenWord);
             System.out.print("\nВы угадали:" + hiddenWord + "\nПопробуйте еще раз: ");
 
@@ -38,6 +45,10 @@ public class GuessWordGame {
     public static String getRandomWord(int bound, int shift) {
         Random random = new Random();
         return words[random.nextInt(bound) - shift];
+    }
+
+    public static boolean stringContainsUppercase(String s) {
+        return !s.equals(s.toLowerCase());
     }
 
     public static String openRightSymbols(String right, String answer, String hidden) {

@@ -10,7 +10,7 @@ public class JavaApp {
                 new Cat(CATS_NAME[0]),
                 new Cat(CATS_NAME[1], 5),
                 new Cat(CATS_NAME[2]),
-                new Cat(CATS_NAME[3], 8),
+                new Cat(CATS_NAME[3], 18),
                 new Cat(CATS_NAME[4]),
         };
 

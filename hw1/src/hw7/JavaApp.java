@@ -8,9 +8,9 @@ public class JavaApp {
 
         Cat[] cats = {
                 new Cat(CATS_NAME[0]),
-                new Cat(CATS_NAME[1]),
+                new Cat(CATS_NAME[1], 5),
                 new Cat(CATS_NAME[2]),
-                new Cat(CATS_NAME[3]),
+                new Cat(CATS_NAME[3], 8),
                 new Cat(CATS_NAME[4]),
         };
 

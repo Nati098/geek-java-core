@@ -11,6 +11,15 @@ public class Plate {
         return food;
     }
 
+    public boolean addFood(int amount) {
+        if (amount < 0) {
+            return false;
+        }
+
+        food += amount;
+        return true;
+    }
+
     public boolean decreaseFood(int amount) {
         if (isDecreaseEnabled(amount)) {
             food -= amount;

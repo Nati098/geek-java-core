@@ -71,6 +71,7 @@ public class SettingsWindow extends JFrame {
 
             GameLogic.SIZE = fieldSize;
             GameLogic.DOTS_TO_WIN = winningLength;
+            GameLogic.GAME_MODE = mode;
             GameLogic.initMap();
             GameLogic.isFinished = false;
 

@@ -18,40 +18,44 @@ public class GameLogic {
 
     public static int SIZE;
     public static int DOTS_TO_WIN;
+    public static int GAME_MODE;
     public static boolean isFinished;
 
-    public static int whoWon = -1;  // 0=ai, 1=human, 2=nobody
+    public static int whoWon = -1;  // 0=ai or player 2, 1 = player 1, 2=nobody
 
-    public static void go() {
+    public static void go(char c) {
         isFinished = true;
 
         printMap();
 
-        if (checkWinLines(DOT_X)) {
+        if (checkWinLines(c)) {
             printMap();
-            System.out.println("Победа за игроком!");
-            whoWon = 1;
+            String playerName = c == GameLogic.DOT_X ? "Player X" : "Player O";
+            System.out.println(playerName + " won!");
+            whoWon = c == GameLogic.DOT_X ? 1 : 0;
             return;
         }
         if (isNoTurns()) {
             printMap();
-            System.out.println("Ничья!");
+            System.out.println("Dead heat!");
             whoWon = 2;
             return;
         }
 
-        robotTurn();
-        printMap();
+        if (GAME_MODE == SettingsWindow.GAME_MODE_H_VS_A) {
+            robotTurn();
+            printMap();
 
-        if (checkWinLines(DOT_O)) {
-            System.out.println("Победа за компьютером!");
-            whoWon = 0;
-            return;
-        }
-        if (isNoTurns()) {
-            System.out.println("Ничья!");
-            whoWon = 2;
-            return;
+            if (checkWinLines(DOT_O)) {
+                System.out.println("Player O won!");
+                whoWon = 0;
+                return;
+            }
+            if (isNoTurns()) {
+                System.out.println("Dead heat!");
+                whoWon = 2;
+                return;
+            }
         }
 
         isFinished = false;
@@ -89,10 +93,10 @@ public class GameLogic {
         return map[y][x] == DOT_EMPTY;
     }
 
-    public static void humanTurn(int x, int y) {
+    public static void humanTurn(int x, int y, char c) {
         if (isCellValid(x, y)) {
-            map[y][x] = DOT_X;
-            go();
+            map[y][x] = c;
+            go(c);
         }
     }
 

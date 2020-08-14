@@ -15,6 +15,7 @@ public class BattleWindow extends JPanel {
     private int winningLength;
 
     private boolean isInit;
+    private char nextTurn;
 
     public BattleWindow(GameWindow gw) {
         this.gameWindow = gw;
@@ -36,6 +37,7 @@ public class BattleWindow extends JPanel {
         this.winningLength = winningLength;
 
         isInit = true;
+        nextTurn = GameLogic.DOT_X;
 
         repaint();
     }
@@ -45,7 +47,14 @@ public class BattleWindow extends JPanel {
         int cellY = e.getY() / cellHeight;
 
         if(!GameLogic.isFinished){
-            GameLogic.humanTurn(cellX, cellY);
+            GameLogic.humanTurn(cellX, cellY, nextTurn);
+
+            nextTurn = (mode == SettingsWindow.GAME_MODE_H_VS_H) && (nextTurn == GameLogic.DOT_X) ?
+                       GameLogic.DOT_O : GameLogic.DOT_X;
+        }
+
+        if (!GameLogic.isFinished && mode == SettingsWindow.GAME_MODE_H_VS_H) {
+            GameLogic.humanTurn(cellX, cellY, GameLogic.DOT_O);
         }
 
         repaint();
@@ -56,12 +65,14 @@ public class BattleWindow extends JPanel {
     }
 
     private void showDialogWindow() {
+        String player1Name = mode == SettingsWindow.GAME_MODE_H_VS_A ? "You" : "Player X";
+        String player2Name = "Player O";
         switch (GameLogic.whoWon) {
             case 0:
-                JOptionPane.showMessageDialog(this, "Computer won!", "Game over", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, player2Name + " won!", "Game over", JOptionPane.PLAIN_MESSAGE);
                 break;
             case 1:
-                JOptionPane.showMessageDialog(this, "You won!", "Game over", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, player1Name + " won!", "Game over", JOptionPane.PLAIN_MESSAGE);
                 break;
             case 2:
                 JOptionPane.showMessageDialog(this, "Dead heat!", "Game over", JOptionPane.PLAIN_MESSAGE);

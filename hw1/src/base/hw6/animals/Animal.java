@@ -1,4 +1,4 @@
-package hw6.animals;
+package base.hw6.animals;
 
 public abstract class Animal {
 

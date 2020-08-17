@@ -1,4 +1,4 @@
-package hw7;
+package base.hw7;
 
 public class Plate {
     private int food;

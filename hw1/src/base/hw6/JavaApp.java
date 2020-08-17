@@ -1,10 +1,10 @@
-package hw6;
+package base.hw6;
 
-import hw6.animals.Animal;
-import hw6.animals.Cat;
-import hw6.animals.Dog;
+import base.hw6.animals.Animal;
+import base.hw6.animals.Cat;
+import base.hw6.animals.Dog;
 
-import static hw6.Data.*;
+import static base.hw6.Data.*;
 
 public class JavaApp {
 

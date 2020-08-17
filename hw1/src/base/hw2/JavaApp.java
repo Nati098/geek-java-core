@@ -1,4 +1,4 @@
-package hw2;
+package base.hw2;
 
 import java.util.Arrays;
 import java.util.Random;

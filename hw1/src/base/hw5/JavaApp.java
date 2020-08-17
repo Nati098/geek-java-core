@@ -1,6 +1,6 @@
-package hw5;
+package base.hw5;
 
-import static hw5.Data.*;
+import static base.hw5.Data.*;
 
 public class JavaApp {
 

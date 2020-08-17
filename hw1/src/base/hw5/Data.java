@@ -1,4 +1,4 @@
-package hw5;
+package base.hw5;
 
 public class Data {
     public static final String[] FIOS = {"Ivanov Ivan", "Sidorov Alexey", "Afonin Grigory", "Lukina Natalia", "Romanova Vasilisa"};

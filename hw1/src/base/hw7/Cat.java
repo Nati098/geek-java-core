@@ -1,4 +1,4 @@
-package hw7;
+package base.hw7;
 
 public class Cat {
     private String name;

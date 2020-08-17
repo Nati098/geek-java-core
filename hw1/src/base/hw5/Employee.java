@@ -1,4 +1,4 @@
-package hw5;
+package base.hw5;
 
 public class Employee {
     private String fio;

@@ -1,6 +1,6 @@
-package hw7;
+package base.hw7;
 
-import static hw6.Data.*;
+import static base.hw6.Data.*;
 
 public class JavaApp {
     public static void main(String[] args) {

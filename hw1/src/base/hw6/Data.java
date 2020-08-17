@@ -1,4 +1,4 @@
-package hw6;
+package base.hw6;
 
 public class Data {
     public static final String[] CATS_NAME = {"Мику", "Хару", "Клео", "Фумио", "Акеми", "Тайки"};

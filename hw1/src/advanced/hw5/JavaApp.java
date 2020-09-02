@@ -27,8 +27,6 @@ public class JavaApp {
         mapWithFormula(arr, Thread.currentThread().getName());
 
         System.out.println("Method1: " + (System.currentTimeMillis() - t0) + " ms");
-        System.out.println("Res: ");
-        printArr(Arrays.copyOfRange(arr, 0, 20));
     }
 
     public static void method2() throws InterruptedException {
@@ -42,9 +40,7 @@ public class JavaApp {
         System.arraycopy(arr, 0, arr1, 0, HALF);
         System.arraycopy(arr, HALF, arr2, 0, HALF);
 
-        Thread t1 = new Thread(() -> {
-            mapWithFormula(arr1, Thread.currentThread().getName());
-        });
+        Thread t1 = new Thread(() -> mapWithFormula(arr1, Thread.currentThread().getName()));
         Thread t2 = new Thread(() -> {
             mapWithFormula(arr2, Thread.currentThread().getName());
         });
@@ -59,25 +55,15 @@ public class JavaApp {
         System.arraycopy(arr2, 0, arr, HALF, HALF);
 
         System.out.println("Method2: " + (System.currentTimeMillis() - t0)  + " ms");
-        System.out.println("Res arr1: ");
-        printArr(Arrays.copyOfRange(arr1, 0, 20));
-        System.out.println("Res arr2: ");
-        printArr(Arrays.copyOfRange(arr2, 0, 20));
-        System.out.println("Res arr (1st half): ");
-        printArr(Arrays.copyOfRange(arr, 0, 20));
-        System.out.println("Res arr (2nd half): ");
-        printArr(Arrays.copyOfRange(arr, HALF, HALF+20));
-
     }
 
     public static float[] mapWithFormula(float[] arr, String threadName) {
-        System.out.println(threadName+ " mapWithFormula");
         synchronized (o) {
             for (int i=0; i < arr.length; i++) {
                 arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         }
-        
+
         return arr;
     }
 

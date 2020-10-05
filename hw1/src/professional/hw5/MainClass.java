@@ -14,7 +14,7 @@ public class MainClass {
     public static void main(String[] args) {
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
 
-//    TODO    Semaphore sem = new Semaphore(CARS_COUNT / 2);
+        Semaphore sem = new Semaphore(CARS_COUNT / 2);
 
         ArrayBlockingQueue<Race> abq = new ArrayBlockingQueue<>(1);
         CountDownLatch cdl = new CountDownLatch(CARS_COUNT);
@@ -22,7 +22,7 @@ public class MainClass {
         //prepare race
         new Thread(()-> {
             try {
-                Race race = new Race(new Road(60), new Tunnel(), new Road(40));
+                Race race = new Race(new Road(60), new Tunnel(sem), new Road(40));
                 abq.put(race);
             } catch (InterruptedException e) {
                 e.printStackTrace();
